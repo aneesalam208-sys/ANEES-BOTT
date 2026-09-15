@@ -13,9 +13,17 @@ BOT_TOKENS = [
 
 OWNER_ID = 5664545994  # Aapki Telegram Owner ID
 
+import os
+import asyncio
+import random
+from pyrogram import Client, filters
+
+API_ID = int(os.getenv("API_ID", "0"))
+API_HASH = os.getenv("API_HASH", "")
+
 # Multiple Clients initialization
 apps = [
-    Client(f"anees_bot_{i}", bot_token=token)
+    Client(f"anees_bot_{i}", api_id=API_ID, api_hash=API_HASH, bot_token=token)
     for i, token in enumerate(BOT_TOKENS)
 ]
 
